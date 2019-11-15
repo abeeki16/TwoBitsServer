@@ -3,7 +3,8 @@ from rest_framework import generics
 from . import serializers
 from django.contrib.auth import get_user_model
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.authentication import TokenAuthentication, BasicAuthentication
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import generics
 from rest_framework import permissions
 
@@ -29,5 +30,11 @@ def create_auth(request):
 @authentication_classes([])
 @permission_classes([])
 class UserCreateAPIView(generics.CreateAPIView):
+    serializer_class = serializers.UserSerializer
+    queryset = User.objects.all()
+
+@authentication_classes([TokenAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticated])
+class ReadUserAPIView(generics.RetrieveAPIView):
     serializer_class = serializers.UserSerializer
     queryset = User.objects.all()
