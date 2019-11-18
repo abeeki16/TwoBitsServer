@@ -55,10 +55,10 @@ def roundup(transaction, user_bits):
     to_donate = twobits - transaction % twobits
     if user_bits > 2:
         to_donate += (user_bits*0.125) - 0.25
-    return round(to_donate + transaction, 2)
+    return round(to_donate, 2)
 
 
-def get_monthly_roundups():
+def get_monthly_roundup_charge():
     """Returns total sum of rounded up transactions for the past 30 days."""
     client = get_client()
     transaction_response, success = get_transactions(client)
@@ -70,8 +70,6 @@ def get_monthly_roundups():
         if transaction['amount'] > 0:
             total_sum += roundup(transaction['amount'], 2)
     return total_sum
-
-
 
 
 
