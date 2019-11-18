@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
     path('', views.UserCreateAPIView.as_view(), name='user-list'),
     path('login/', auth_views.obtain_auth_token),
-    path('<int:pk>/', views.ReadUserAPIView.as_view())
+    path('<int:pk>/', views.ReadUserAPIView.as_view()),
+    path('<int:pk>/profile/', views.ReadUpdateProfileAPIView.as_view())
 ]

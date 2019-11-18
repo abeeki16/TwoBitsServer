@@ -8,6 +8,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import generics
 from rest_framework import permissions
 from . import permissions as custom_permissions
+from .models import Profile
 
 User = get_user_model()
 
@@ -39,3 +40,9 @@ class UserCreateAPIView(generics.CreateAPIView):
 class ReadUserAPIView(generics.RetrieveAPIView):
     serializer_class = serializers.UserSerializer
     queryset = User.objects.all()
+
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated, custom_permissions.IsOwnerOrReadOnly])
+class ReadUpdateProfileAPIView(generics.RetrieveUpdateAPIView):
+    serializer_class = serializers.ProfileSerializer
+    queryset = Profile.objects.all()
