@@ -7,6 +7,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     date_joined = models.DateField(auto_now_add=True)
+    is_donator = models.BooleanField(bool=False)
 
 
 class Charity(models.Model):
