@@ -1,13 +1,49 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import Profile
+from .models import Profile, Charity
 
 User = get_user_model()
 
-class ProfileSerializer(serializers.ModelSerializer):
+
+class CharitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Charity
+        fields = '__all__'
+
+class ProfileReadSerializer(serializers.ModelSerializer):
+    #charities = CharitySerializer(many= True)
     class Meta:
         model = Profile
-        fields = ('id', 'first_name', 'last_name', 'date_joined',)
+        fields = ('id', 'first_name', 'last_name', 'date_joined','charities',)
+
+    def to_representation(self, instance):
+        data = super(ProfileReadSerializer, self).to_representation(instance)
+        print(data)
+        for i in range(len(data['charities'])):
+            charity_id = data['charities'][i]
+            print(charity_id)
+            value = CharitySerializer(Charity.objects.get(id=charity_id)).data
+            data['charities'][i] = value
+            print(data['charities'])
+
+        return data
+    
+class ProfileSerializer(serializers.ModelSerializer):
+    #charities = CharitySerializer(many= True)
+    class Meta:
+        model = Profile
+        fields = ('id', 'first_name', 'last_name', 'date_joined','charities',)
+    
+    def update(self,instance, validated_data):
+        charities = validated_data.pop("charities")
+        print(charities)
+        for charity in charities:
+            print(charity)
+            #charity = Charity.objects.get(id=charity_id)
+            instance.charities.add(charity)
+        return instance
+    
+
 class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer()
     class Meta:

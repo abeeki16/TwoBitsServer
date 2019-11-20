@@ -22,5 +22,5 @@ Including another URLconf
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-token-auth/',views.obtain_auth_token,name='api-token-auth'),
-    path('api/users/', include('api.urls'),name='api')
+    path('api/', include('api.urls'),name='api')
 ]
