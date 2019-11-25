@@ -2,6 +2,8 @@ import plaid
 import os
 import datetime
 from testing_variables import SANDBOX_INSTITUTION
+from secret import PLAID_CLIENT_ID, PLAID_SECRET, PLAID_PUBLIC_KEY, PLAID_PRODUCTS, \
+    PLAID_COUNTRY_CODES, PLAID_ENV
 
 
 PLAID_ACCESS_TOKEN = None
@@ -9,12 +11,6 @@ PLAID_PUBLIC_TOKEN = None
 
 
 def get_client():
-    PLAID_CLIENT_ID = os.getenv('PLAID_CLIENT_ID')
-    PLAID_SECRET = os.getenv('PLAID_SECRET')
-    PLAID_PUBLIC_KEY = os.getenv('PLAID_PUBLIC_KEY')
-    PLAID_ENV = os.getenv('PLAID_ENV', 'sandbox')
-    PLAID_PRODUCTS = os.getenv('PLAID_PRODUCTS', 'transactions')
-    PLAID_COUNTRY_CODES = os.getenv('PLAID_COUNTRY_CODES', 'US,CA,GB,FR,ES')
     client = plaid.Client(client_id = PLAID_CLIENT_ID,
                           secret = PLAID_SECRET,
                           public_key = PLAID_PUBLIC_KEY,
@@ -24,8 +20,7 @@ def get_client():
 
 
 def get_access_token(client):
-    public_token = client.Sandbox.public_token.create(SANDBOX_INSTITUTION,
-                                                      ['transactions'])
+    public_token = client.Sandbox.public_token.create(SANDBOX_INSTITUTION, ['transactions'])
     # the public token is received from Plaid Link
     response = client.Item.public_token.exchange(public_token)
     global access_token
@@ -70,7 +65,6 @@ def get_monthly_roundup_charge():
         if transaction['amount'] > 0:
             total_sum += roundup(transaction['amount'], 2)
     return total_sum
-
 
 
 def format_error(e):

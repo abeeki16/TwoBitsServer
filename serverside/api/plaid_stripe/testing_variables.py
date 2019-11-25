@@ -1,2 +1,3 @@
 
 SANDBOX_INSTITUTION = 'ins_109508'
+STRIPE_API_KEY = 'sk_test_PpdcRckmBiDlfwQLDo2JEWe800dvTkhyP1'
