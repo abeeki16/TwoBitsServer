@@ -8,5 +8,7 @@ urlpatterns = [
     path('users/login/', auth_views.obtain_auth_token),
     path('users/<int:pk>/', views.ReadUserAPIView.as_view()),
     path('users/<int:pk>/profile/', views.ReadUpdateProfileAPIView.as_view()),
-    path('charities/', views.ListCharitiesAPIView.as_view())
+    path('charities/', views.ListCharitiesAPIView.as_view()),
+    path('categories/', views.ListCategoriesAPIView.as_view())
+
 ]

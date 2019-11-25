@@ -8,7 +8,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import generics
 from rest_framework import permissions
 from . import permissions as custom_permissions
-from .models import Profile, Charity
+from .models import Profile, Charity, Category
 
 User = get_user_model()
 
@@ -61,3 +61,10 @@ class ReadUpdateProfileAPIView(generics.RetrieveUpdateAPIView):
 class ListCharitiesAPIView(generics.ListAPIView):
     serializer_class = serializers.CharitySerializer
     queryset = Charity.objects.all()
+
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+class ListCategoriesAPIView(generics.ListAPIView):
+    serializer_class = serializers.CategorySerializer
+    queryset = Category.objects.all()
+

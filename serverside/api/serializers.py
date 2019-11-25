@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import Profile, Charity
+from .models import Profile, Charity, Category
 
 User = get_user_model()
+
 
 
 class CharitySerializer(serializers.ModelSerializer):
@@ -10,11 +11,16 @@ class CharitySerializer(serializers.ModelSerializer):
         model = Charity
         fields = '__all__'
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
 class ProfileReadSerializer(serializers.ModelSerializer):
     #charities = CharitySerializer(many= True)
     class Meta:
         model = Profile
-        fields = ('id', 'first_name', 'last_name', 'date_joined','charities',)
+        fields = ('id', 'first_name', 'last_name', 'date_joined','charities','categories')
 
     def to_representation(self, instance):
         data = super(ProfileReadSerializer, self).to_representation(instance)
@@ -32,11 +38,16 @@ class ProfileSerializer(serializers.ModelSerializer):
     #charities = CharitySerializer(many= True)
     class Meta:
         model = Profile
-        fields = ('id', 'first_name', 'last_name', 'date_joined','charities',)
+        fields = ('id', 'first_name', 'last_name', 'date_joined','charities','categories')
     
     def update(self,instance, validated_data):
         charities = validated_data.pop("charities")
+        categories = validated_data.pop("categories")
         print(charities)
+        for category in categories:
+            print(category)
+            #charity = Charity.objects.get(id=charity_id)
+            instance.categories.add(category)
         for charity in charities:
             print(charity)
             #charity = Charity.objects.get(id=charity_id)
