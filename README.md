@@ -43,7 +43,7 @@ $ python manage.py migrate
 $ python manage.py runserver
 ```
 
-2. Open TwoBits project using [Android Studio](https://developer.android.com/studio/install). Build and Run the app.
+3. Open TwoBits project using [Android Studio](https://developer.android.com/studio/install). Build and Run the app.
 
 
 
