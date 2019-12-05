@@ -8,6 +8,9 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import generics
 from rest_framework import permissions
 from . import permissions as custom_permissions
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
 from .models import Profile, Charity, Category
 
 User = get_user_model()
@@ -67,4 +70,13 @@ class ListCharitiesAPIView(generics.ListAPIView):
 class ListCategoriesAPIView(generics.ListAPIView):
     serializer_class = serializers.CategorySerializer
     queryset = Category.objects.all()
+
+
+
+
+class CustomObtainAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        return Response({'token': token.key, 'id': token.user_id})
 
