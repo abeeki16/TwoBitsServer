@@ -23,7 +23,8 @@ Fall 2019, Boston University.
 1. Set your environment variables
 To gain access to the Plaid API, please create an account on [Plaid's Dashboard](https://dashboard.plaid.com/signin). 
 To gain access to the STRIPE API, please create an account on [Stripe's Dashboard](https://dashboard.stripe.com/login). 
-Once you’ve completed the signup process, then change your environment values by entering in terminal prompt:
+Once you’ve completed the signup process, then set your environment values in desired file.
+Example by default, enter in terminal prompt:
 
 ```
 $ vim ~/.bash_profile
