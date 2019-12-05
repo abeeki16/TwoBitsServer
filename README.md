@@ -47,4 +47,3 @@ $ python manage.py runserver
 
 
 
-
