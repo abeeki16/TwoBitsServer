@@ -20,7 +20,7 @@ class ProfileReadSerializer(serializers.ModelSerializer):
     #charities = CharitySerializer(many= True)
     class Meta:
         model = Profile
-        fields = ('id', 'first_name', 'last_name', 'date_joined','charities','categories')
+        fields = ('id', 'first_name', 'last_name', 'date_joined','is_donator','charities','categories')
 
     def to_representation(self, instance):
         data = super(ProfileReadSerializer, self).to_representation(instance)
@@ -38,21 +38,21 @@ class ProfileSerializer(serializers.ModelSerializer):
     #charities = CharitySerializer(many= True)
     class Meta:
         model = Profile
-        fields = ('id', 'first_name', 'last_name', 'date_joined','charities','categories')
+        fields = ('id', 'first_name', 'last_name', 'date_joined','is_donator','charities','categories')
     
-    def update(self,instance, validated_data):
-        charities = validated_data.pop("charities")
-        categories = validated_data.pop("categories")
-        print(charities)
-        for category in categories:
-            print(category)
-            #charity = Charity.objects.get(id=charity_id)
-            instance.categories.add(category)
-        for charity in charities:
-            print(charity)
-            #charity = Charity.objects.get(id=charity_id)
-            instance.charities.add(charity)
-        return instance
+    # def update(self,instance, validated_data):
+    #     charities = validated_data.pop("charities")
+    #     categories = validated_data.pop("categories")
+    #     print(charities)
+    #     for category in categories:
+    #         print(category)
+    #         #charity = Charity.objects.get(id=charity_id)
+    #         instance.categories.add(category)
+    #     for charity in charities:
+    #         print(charity)
+    #         #charity = Charity.objects.get(id=charity_id)
+    #         instance.charities.add(charity)
+    #     return instance
     
 
 class UserSerializer(serializers.ModelSerializer):

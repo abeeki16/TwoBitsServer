@@ -37,3 +37,4 @@ class Profile(models.Model):
     date_joined = models.DateField(auto_now_add=True)
     charities = models.ManyToManyField(Charity,blank=True)
     categories = models.ManyToManyField(Category, blank=True)
+    is_donator=models.IntegerField(default=0)
