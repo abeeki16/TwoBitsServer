@@ -4,7 +4,7 @@ Mobile Application
 Project repository for the CS591 X-Lab Practicum. <br />
 Fall 2019, Boston University.
 
-## Team members (alphabetically ordered)
+## Team members
 * [Ajit Beeki](https://github.com/abeeki16)
 * [Camilla Satte](https://github.com/collisior)
 * [Kaylin Mok](https://github.com/mhkaylyn)
