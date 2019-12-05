@@ -1,0 +1,5 @@
+Django==1.4.2
+stripe
+plaid-python
+djangorestframework
+

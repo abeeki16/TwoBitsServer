@@ -1,1 +1,0 @@
-SELECT * FROM charityDB.`charity table`;
