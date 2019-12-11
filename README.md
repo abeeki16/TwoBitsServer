@@ -23,21 +23,22 @@ Fall 2019, Boston University.
 1. Set your environment variables
 To gain access to the Plaid API, please create an account on [Plaid's Dashboard](https://dashboard.plaid.com/signin). 
 To gain access to the STRIPE API, please create an account on [Stripe's Dashboard](https://dashboard.stripe.com/login). 
-Once you’ve completed the signup process, then change your environment values by entering in terminal prompt:
+Once you’ve completed the signup process, then set your environment values in desired file.
+Example by default, enter in terminal prompt:
 
 ```
 $ vim ~/.bash_profile
 ```
 
-and set these values: PLAID_CLIENT_ID, PLAID_SECRET, PLAID_PUBLIC_KEY, STRIPE_API_KEY, STRIPE_LIVE_PUBLIC_KEY, STRIPE_LIVE_SECRET_KEY, STRIPE_PUBLIC_KEY_TEST, STRIPE_SECRET_KEY_TEST, STRIPE_LIVE_MODE = False, STRIPE_TEST_API_KEY
+and set these values: PLAID_CLIENT_ID, PLAID_SECRET, PLAID_PUBLIC_KEY, STRIPE_API_KEY, STRIPE_LIVE_PUBLIC_KEY, STRIPE_LIVE_SECRET_KEY, STRIPE_PUBLIC_KEY_TEST, STRIPE_SECRET_KEY_TEST, STRIPE_TEST_API_KEY
 
 2. Open up your terminal prompt app and go to the desired folder to clone the repo. Then enter:
 
 ```
 $ git clone https://github.com/abeeki16/TwoBitsServer.git
 $ git clone https://github.com/collisior/TwoBits.git
-$ pip install -r requirements.txt
 $ cd serverside
+$ pip install -r requirements.txt
 $ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py runserver
