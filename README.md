@@ -19,7 +19,8 @@ Fall 2019, Boston University.
 
 ## Third Party Libraries
 
-Django rest framework
+Django REST framework
+https://www.django-rest-framework.org/#
 
 
 ## Want to run the project?
