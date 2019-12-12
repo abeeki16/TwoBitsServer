@@ -17,6 +17,10 @@ Fall 2019, Boston University.
 * Frontend: Java, XML (Android Studio)
 * Database: SQLite
 
+## Third Party Libraries
+
+Django rest framework
+
 
 ## Want to run the project?
 
