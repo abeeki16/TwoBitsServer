@@ -46,5 +46,25 @@ $ python manage.py runserver
 
 3. Open TwoBits project using [Android Studio](https://developer.android.com/studio/install). Build and Run the app.
 
+## Documentation
+
+The server is accessible through the following rest endpoints
+
+## Creating User
+
+POST api/users/
+Post to this endpoint to register a user.
+
+## Login
+POST api/users/login/
+Login with a username and password. The resposne will have an authentication token and id.
+
+## Retrieve and update profiles 
+GET, PUT, PATCH api/users/{id}/profile
+Allows user to access profile and modify profile using id. User must specificy token.
+
+
+
+
 
 
