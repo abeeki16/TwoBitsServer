@@ -54,19 +54,44 @@ The server is accessible through the following rest endpoints
 
 POST api/users/
 
+```json
+{
+  username:
+  password:
+  email:
+  profile: {
+    first name:
+    last name:
+  }
+}
+```
 Post to this endpoint to register a user.
 
 ## Login
 POST api/users/login/
 
-Login with a username and password. The resposne will have an authentication token and id.
+```json
+{
+  username:
+  password:
+}
+```
+Login with a username and password. The response will have an authentication token and id.
 
 ## Retrieve and update profiles 
 GET, PUT, PATCH api/users/{id}/profile
 
-Allows user to access profile and modify profile using id. User must specificy token.
+Allows user to access profile and modify profile using id. User must specificy a Authorization header in the response with the word token preceding the token.
 
+Request json"
 
+```json
+{
+   first_name:
+   last_name:
+   ...
+}
+```
 
 
 
