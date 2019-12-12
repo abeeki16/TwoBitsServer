@@ -79,7 +79,7 @@ POST api/users/login/
 Login with a username and password. The response will have an authentication token and id.
 
 ## Retrieve and update profiles 
-GET, PUT, PATCH api/users/{id}/profile
+GET, PUT, PATCH api/users/{id}/profile/
 
 Allows user to access profile and modify profile using id. User must specificy a Authorization header in the response with the word token preceding the token.
 
