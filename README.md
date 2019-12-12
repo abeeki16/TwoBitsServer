@@ -83,7 +83,9 @@ GET, PUT, PATCH api/users/{id}/profile
 
 Allows user to access profile and modify profile using id. User must specificy a Authorization header in the response with the word token preceding the token.
 
-Request json"
+Authorization: Token 8eeef32323999549444
+
+Request json structure
 
 ```json
 {
