@@ -37,14 +37,18 @@ $ vim ~/.bash_profile
 
 and set these values: PLAID_CLIENT_ID, PLAID_SECRET, PLAID_PUBLIC_KEY, STRIPE_API_KEY, STRIPE_LIVE_PUBLIC_KEY, STRIPE_LIVE_SECRET_KEY, STRIPE_PUBLIC_KEY_TEST, STRIPE_SECRET_KEY_TEST, STRIPE_TEST_API_KEY
 
-1. Make sure you have installed python virtualenv
+1. Make sure you have set up python virtual environment
 2. Open up your terminal prompt app and go to the desired folder to clone the repo. Then enter:
 
 ```
+$ pip install virtualenv
+
 $ git clone https://github.com/abeeki16/TwoBitsServer.git
 $ git clone https://github.com/collisior/TwoBits.git
-$ pip install -r requirements.txt
 $ cd serverside
+$ virtualenv env
+$ source env/bin/activate
+$ pip install -r requirements.txt
 $ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py runserver
