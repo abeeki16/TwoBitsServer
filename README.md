@@ -45,10 +45,10 @@ $ pip install virtualenv
 
 $ git clone https://github.com/abeeki16/TwoBitsServer.git
 $ git clone https://github.com/collisior/TwoBits.git
-$ cd serverside
 $ virtualenv env
 $ source env/bin/activate
 $ pip install -r requirements.txt
+$ cd serverside
 $ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py runserver
