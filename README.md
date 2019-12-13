@@ -43,8 +43,8 @@ and set these values: PLAID_CLIENT_ID, PLAID_SECRET, PLAID_PUBLIC_KEY, STRIPE_AP
 ```
 $ git clone https://github.com/abeeki16/TwoBitsServer.git
 $ git clone https://github.com/collisior/TwoBits.git
-$ cd serverside
 $ pip install -r requirements.txt
+$ cd serverside
 $ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py runserver
